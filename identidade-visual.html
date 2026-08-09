@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FlexiPay — Identidade Visual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --magenta: #91278f;
+        --magenta-hover: #7b1f79;
+        --magenta-light: rgba(145, 39, 143, 0.08);
+        --accent-pink: #ed1369;
+        --dark: #100127;
+        --dark-soft: #2a1240;
+        --white: #ffffff;
+        --ice-white: #f8f6fa;
+        --gray-100: #f1f0f2;
+        --gray-200: #e2e0e4;
+        --gray-600: #797a7a;
+        --gray-800: #3a2450;
+        --gray-900: #100127;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Nunito Sans', sans-serif;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+        background-color: var(--ice-white);
+        color: var(--gray-600);
+        line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+        color: var(--gray-900);
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+    }
+
+    .page {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 64px 32px 100px;
+    }
+
+    /* Cabeçalho do documento */
+    .doc-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding-bottom: 32px;
+        margin-bottom: 56px;
+        border-bottom: 2px solid var(--gray-900);
+    }
+
+    .doc-header img {
+        height: 48px;
+        width: auto;
+    }
+
+    .doc-header .doc-meta {
+        text-align: right;
+        font-size: 0.85rem;
+        color: var(--gray-600);
+    }
+
+    .doc-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 8px;
+    }
+
+    .doc-subtitle {
+        font-size: 1.1rem;
+        color: var(--gray-600);
+        max-width: 640px;
+        margin-bottom: 40px;
+    }
+
+    /* Seções */
+    section {
+        margin-bottom: 72px;
+        break-inside: avoid;
+    }
+
+    .section-label {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--magenta);
+        margin-bottom: 8px;
+    }
+
+    section > h2 {
+        font-size: 1.75rem;
+        font-weight: 800;
+        margin-bottom: 12px;
+    }
+
+    section > p.section-desc {
+        font-size: 1rem;
+        color: var(--gray-600);
+        max-width: 640px;
+        margin-bottom: 32px;
+    }
+
+    /* ===== LOGOTIPO ===== */
+    .logo-showcase {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .logo-box {
+        border-radius: 16px;
+        padding: 48px 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--gray-200);
+    }
+
+    .logo-box.light { background: var(--white); }
+    .logo-box.dark { background: var(--gray-900); }
+
+    .logo-box img { height: 44px; width: auto; }
+    .logo-box.dark img { filter: brightness(0) invert(1); }
+
+    .logo-caption {
+        font-size: 0.85rem;
+        color: var(--gray-600);
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .clearspace-box {
+        margin-top: 24px;
+        border: 1px dashed var(--gray-200);
+        border-radius: 16px;
+        padding: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--white);
+    }
+
+    .clearspace-inner {
+        border: 1px dashed var(--magenta);
+        padding: 28px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .clearspace-inner img { height: 36px; }
+
+    .rules-list {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+
+    .rule-item {
+        display: flex;
+        gap: 10px;
+        font-size: 0.9rem;
+        color: var(--gray-600);
+    }
+
+    .rule-item .mark {
+        font-weight: 800;
+        flex-shrink: 0;
+    }
+
+    .rule-item.ok .mark { color: #16a34a; }
+    .rule-item.no .mark { color: #dc2626; }
+
+    /* ===== PALETA DE CORES ===== */
+    .color-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+    }
+
+    .color-card {
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid var(--gray-200);
+        background: var(--white);
+    }
+
+    .color-swatch {
+        height: 90px;
+        width: 100%;
+    }
+
+    .color-info {
+        padding: 12px 14px;
+    }
+
+    .color-name {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--gray-900);
+    }
+
+    .color-hex {
+        font-size: 0.8rem;
+        color: var(--gray-600);
+        font-family: 'SF Mono', Consolas, monospace;
+    }
+
+    .color-usage {
+        font-size: 0.75rem;
+        color: var(--gray-600);
+        margin-top: 4px;
+    }
+
+    .proportion-bar {
+        margin-top: 24px;
+        display: flex;
+        height: 40px;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .proportion-bar div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 0.8rem;
+        font-weight: 700;
+    }
+
+    /* Tabela de tons (tints) */
+    .tint-table {
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid var(--gray-200);
+    }
+
+    .tint-row {
+        display: grid;
+        grid-template-columns: 160px repeat(4, 1fr);
+    }
+
+    .tint-header-row {
+        background: var(--white);
+    }
+
+    .tint-cell-label {
+        text-align: center;
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--gray-600);
+        padding: 12px 0;
+    }
+
+    .tint-row-label {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 16px;
+        background: var(--white);
+    }
+
+    .tint-name {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--gray-900);
+    }
+
+    .tint-hex {
+        font-size: 0.75rem;
+        color: var(--gray-600);
+        font-family: 'SF Mono', Consolas, monospace;
+    }
+
+    .tint-cell {
+        height: 64px;
+    }
+
+    /* ===== TIPOGRAFIA ===== */
+    .type-sample {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--gray-200);
+        gap: 24px;
+    }
+
+    .type-sample:last-child { border-bottom: none; }
+
+    .type-sample .sample-text {
+        color: var(--gray-900);
+        flex: 1;
+    }
+
+    .type-sample .sample-meta {
+        font-size: 0.8rem;
+        color: var(--gray-600);
+        text-align: right;
+        white-space: nowrap;
+        font-family: 'SF Mono', Consolas, monospace;
+    }
+
+    .weight-grid {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+    }
+
+    .weight-card {
+        border: 1px solid var(--gray-200);
+        border-radius: 12px;
+        padding: 20px;
+        background: var(--white);
+        text-align: center;
+    }
+
+    .weight-card .w-sample {
+        font-size: 1.75rem;
+        color: var(--gray-900);
+        margin-bottom: 6px;
+    }
+
+    .weight-card .w-label {
+        font-size: 0.8rem;
+        color: var(--gray-600);
+    }
+
+    /* ===== BOTÕES / ELEMENTOS ===== */
+    .btn {
+        display: inline-block;
+        padding: 14px 28px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .btn-primary {
+        background-color: var(--magenta);
+        color: var(--white);
+        border: none;
+        box-shadow: 0 4px 14px rgba(145, 39, 143, 0.2);
+    }
+
+    .btn-outline {
+        background-color: transparent;
+        color: var(--gray-900);
+        border: 2px solid var(--gray-200);
+    }
+
+    .elements-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .element-card {
+        border: 1px solid var(--gray-200);
+        border-radius: 16px;
+        padding: 28px;
+        background: var(--white);
+    }
+
+    .element-card h4 {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--gray-600);
+        font-weight: 700;
+        margin-bottom: 18px;
+    }
+
+    .btn-row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .card-demo {
+        background: var(--ice-white);
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 12px 24px rgba(15, 23, 42, 0.06);
+    }
+
+    .card-demo .stat-num {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--magenta);
+    }
+
+    .card-demo .stat-label {
+        font-size: 0.85rem;
+        color: var(--gray-600);
+        margin-top: 4px;
+    }
+
+    .radius-row, .shadow-row {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+
+    .radius-box, .shadow-box {
+        width: 70px;
+        height: 70px;
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        color: var(--gray-600);
+        text-align: center;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .tag-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--magenta-light);
+        color: var(--magenta);
+        padding: 6px 14px;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        font-weight: 700;
+    }
+
+    /* Rodapé do doc */
+    .doc-footer {
+        margin-top: 80px;
+        padding-top: 24px;
+        border-top: 1px solid var(--gray-200);
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8rem;
+        color: var(--gray-600);
+    }
+
+    /* Botão flutuante de impressão (não imprime) */
+    .print-btn {
+        position: fixed;
+        bottom: 32px;
+        right: 32px;
+        background: var(--magenta);
+        color: white;
+        border: none;
+        padding: 14px 24px;
+        border-radius: 999px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        cursor: pointer;
+        box-shadow: 0 8px 24px rgba(145, 39, 143, 0.35);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: 'Nunito Sans', sans-serif;
+    }
+
+    .print-btn:hover { background: var(--magenta-hover); }
+
+    /* ===== IMPRESSÃO ===== */
+    @media print {
+        body { background: white; }
+        .print-btn { display: none; }
+        .page { padding: 0; max-width: 100%; }
+        section { break-inside: avoid; page-break-inside: avoid; }
+        .color-swatch, .logo-box.dark, .btn-primary, .proportion-bar div, .tag-pill {
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .logo-showcase, .color-grid, .weight-grid, .elements-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+        .doc-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+        .doc-header .doc-meta { text-align: left; }
+    }
+</style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">🖨️ Imprimir</button>
+
+<div class="page">
+
+    <div class="doc-header">
+        <img src="fotos/Logotipo_FlexiPay.png" alt="FlexiPay">
+        <div class="doc-meta">
+            Guia de Identidade Visual<br>
+            Versão 1.0 — 2026
+        </div>
+    </div>
+
+    <div class="doc-title">Identidade Visual FlexiPay</div>
+    <p class="doc-subtitle">Este documento reúne os elementos visuais que definem a marca FlexiPay: logotipo, paleta de cores, tipografia e os principais componentes usados no site e materiais de comunicação.</p>
+
+    <!-- LOGOTIPO -->
+    <section>
+        <span class="section-label">01 · Logotipo</span>
+        <h2>Logotipo</h2>
+        <p class="section-desc">O logotipo é o principal elemento de identificação da marca. Deve ser sempre aplicado sobre fundos que garantam bom contraste e legibilidade.</p>
+
+        <div class="logo-showcase">
+            <div>
+                <div class="logo-box light">
+                    <img src="fotos/Logotipo_FlexiPay.png" alt="Logotipo sobre fundo claro">
+                </div>
+                <p class="logo-caption">Versão principal — fundo claro</p>
+            </div>
+            <div>
+                <div class="logo-box dark">
+                    <img src="fotos/Logotipo_FlexiPay.png" alt="Logotipo sobre fundo escuro">
+                </div>
+                <p class="logo-caption">Versão em negativo — fundo escuro</p>
+            </div>
+        </div>
+
+        <div class="clearspace-box">
+            <div class="clearspace-inner">
+                <img src="fotos/Logotipo_FlexiPay.png" alt="Área de respiro do logotipo">
+            </div>
+        </div>
+        <p class="logo-caption">Área de respiro mínima — mantenha o espaço ao redor do logotipo livre de textos, imagens ou outros elementos</p>
+
+        <div class="rules-list">
+            <div class="rule-item ok"><span class="mark">✓</span> Usar sempre as versões originais do arquivo</div>
+            <div class="rule-item ok"><span class="mark">✓</span> Aplicar sobre fundos com bom contraste</div>
+            <div class="rule-item no"><span class="mark">✕</span> Não distorcer, esticar ou rotacionar</div>
+            <div class="rule-item no"><span class="mark">✕</span> Não alterar as cores do logotipo</div>
+        </div>
+    </section>
+
+    <!-- PALETA DE CORES -->
+    <section>
+        <span class="section-label">02 · Cor</span>
+        <h2>Paleta de Cores</h2>
+        <p class="section-desc"><strong>#91278F</strong> é a cor principal da marca. O degradê combinando <strong>#100127</strong> com a cor principal é usado em seções de destaque (CTA, banners, indicadores). Rosa e cinzas compõem a paleta de apoio.</p>
+
+        <div class="tint-table">
+            <div class="tint-row tint-header-row">
+                <div class="tint-row-label"></div>
+                <div class="tint-cell-label">100%</div>
+                <div class="tint-cell-label">75%</div>
+                <div class="tint-cell-label">50%</div>
+                <div class="tint-cell-label">25%</div>
+            </div>
+
+            <div class="tint-row">
+                <div class="tint-row-label">
+                    <span class="tint-name">Roxo Escuro</span>
+                    <span class="tint-hex">#100127</span>
+                </div>
+                <div class="tint-cell" style="background:#100127;"></div>
+                <div class="tint-cell" style="background:#4c405d;"></div>
+                <div class="tint-cell" style="background:#888093;"></div>
+                <div class="tint-cell" style="background:#c3c0c9;"></div>
+            </div>
+
+            <div class="tint-row">
+                <div class="tint-row-label">
+                    <span class="tint-name">Roxo Principal</span>
+                    <span class="tint-hex">#91278F</span>
+                </div>
+                <div class="tint-cell" style="background:#91278f;"></div>
+                <div class="tint-cell" style="background:#ac5dab;"></div>
+                <div class="tint-cell" style="background:#c893c7;"></div>
+                <div class="tint-cell" style="background:#e4c9e3;"></div>
+            </div>
+
+            <div class="tint-row">
+                <div class="tint-row-label">
+                    <span class="tint-name">Rosa Destaque</span>
+                    <span class="tint-hex">#ED1369</span>
+                </div>
+                <div class="tint-cell" style="background:#ed1369;"></div>
+                <div class="tint-cell" style="background:#f24e8e;"></div>
+                <div class="tint-cell" style="background:#f689b4;"></div>
+                <div class="tint-cell" style="background:#fac4da;"></div>
+            </div>
+
+            <div class="tint-row">
+                <div class="tint-row-label">
+                    <span class="tint-name">Cinza</span>
+                    <span class="tint-hex">#797A7A</span>
+                </div>
+                <div class="tint-cell" style="background:#797a7a;"></div>
+                <div class="tint-cell" style="background:#9a9b9b;"></div>
+                <div class="tint-cell" style="background:#bcbcbc;"></div>
+                <div class="tint-cell" style="background:#dedede;"></div>
+            </div>
+
+            <div class="tint-row">
+                <div class="tint-row-label">
+                    <span class="tint-name">Cinza Claro</span>
+                    <span class="tint-hex">#B7B7B7</span>
+                </div>
+                <div class="tint-cell" style="background:#b7b7b7;"></div>
+                <div class="tint-cell" style="background:#c9c9c9;"></div>
+                <div class="tint-cell" style="background:#dbdbdb;"></div>
+                <div class="tint-cell" style="background:#ededed;"></div>
+            </div>
+        </div>
+
+        <div class="color-grid" style="margin-top: 32px;">
+            <div class="color-card">
+                <div class="color-swatch" style="background:#91278f;"></div>
+                <div class="color-info">
+                    <div class="color-name">Roxo Principal</div>
+                    <div class="color-hex">#91278F</div>
+                    <div class="color-usage">Cor principal — CTAs, links, ícones</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background:#100127;"></div>
+                <div class="color-info">
+                    <div class="color-name">Roxo Escuro</div>
+                    <div class="color-hex">#100127</div>
+                    <div class="color-usage">Degradê, textos, fundos escuros</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background:#ed1369;"></div>
+                <div class="color-info">
+                    <div class="color-name">Rosa Destaque</div>
+                    <div class="color-hex">#ED1369</div>
+                    <div class="color-usage">Apoio — pontos de atenção</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background:#ffffff; border-bottom:1px solid #e2e0e4;"></div>
+                <div class="color-info">
+                    <div class="color-name">Branco</div>
+                    <div class="color-hex">#FFFFFF</div>
+                    <div class="color-usage">Fundo base</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background:#797a7a;"></div>
+                <div class="color-info">
+                    <div class="color-name">Cinza</div>
+                    <div class="color-hex">#797A7A</div>
+                    <div class="color-usage">Texto secundário</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background:#b7b7b7;"></div>
+                <div class="color-info">
+                    <div class="color-name">Cinza Claro</div>
+                    <div class="color-hex">#B7B7B7</div>
+                    <div class="color-usage">Bordas e divisórias</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="proportion-bar">
+            <div style="width:80%; background:#b7b7b7;">80% — Base</div>
+            <div style="width:15%; background:#100127;">15% — Texto</div>
+            <div style="width:5%; background:#91278f;">5%</div>
+        </div>
+    </section>
+
+    <!-- TIPOGRAFIA -->
+    <section>
+        <span class="section-label">03 · Tipografia</span>
+        <h2>Tipografia</h2>
+        <p class="section-desc">A fonte oficial da marca é <strong>Nunito Sans</strong>, usada em todos os pesos do sistema — de textos de apoio a títulos de destaque.</p>
+
+        <div class="type-sample">
+            <div class="sample-text" style="font-size:2.75rem; font-weight:800;">Título Principal</div>
+            <div class="sample-meta">H1 · 800 · 2.75rem</div>
+        </div>
+        <div class="type-sample">
+            <div class="sample-text" style="font-size:1.75rem; font-weight:800;">Título de Seção</div>
+            <div class="sample-meta">H2 · 800 · 1.75rem</div>
+        </div>
+        <div class="type-sample">
+            <div class="sample-text" style="font-size:1.25rem; font-weight:700;">Subtítulo</div>
+            <div class="sample-meta">H3 · 700 · 1.25rem</div>
+        </div>
+        <div class="type-sample">
+            <div class="sample-text" style="font-size:1rem; font-weight:400; color: var(--gray-600);">Texto de corpo, usado em parágrafos e descrições ao longo do site.</div>
+            <div class="sample-meta">Body · 400 · 1rem</div>
+        </div>
+        <div class="type-sample">
+            <div class="sample-text" style="font-size:0.85rem; font-weight:600; color: var(--gray-600);">Texto de apoio / legendas</div>
+            <div class="sample-meta">Caption · 600 · 0.85rem</div>
+        </div>
+
+        <div class="weight-grid">
+            <div class="weight-card">
+                <div class="w-sample" style="font-weight:400;">Aa</div>
+                <div class="w-label">Regular · 400</div>
+            </div>
+            <div class="weight-card">
+                <div class="w-sample" style="font-weight:600;">Aa</div>
+                <div class="w-label">SemiBold · 600</div>
+            </div>
+            <div class="weight-card">
+                <div class="w-sample" style="font-weight:700;">Aa</div>
+                <div class="w-label">Bold · 700</div>
+            </div>
+            <div class="weight-card">
+                <div class="w-sample" style="font-weight:800;">Aa</div>
+                <div class="w-label">ExtraBold · 800</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ELEMENTOS DO SISTEMA -->
+    <section>
+        <span class="section-label">04 · Componentes</span>
+        <h2>Elementos do Sistema</h2>
+        <p class="section-desc">Principais componentes visuais reutilizados no site: botões, cards, cantos arredondados e sombras.</p>
+
+        <div class="elements-grid">
+            <div class="element-card">
+                <h4>Botões</h4>
+                <div class="btn-row">
+                    <a class="btn btn-primary">Botão Primário</a>
+                    <a class="btn btn-outline">Botão Outline</a>
+                </div>
+            </div>
+
+            <div class="element-card">
+                <h4>Tag / Pill</h4>
+                <div class="tag-pill">● Destaque</div>
+            </div>
+
+            <div class="element-card">
+                <h4>Card de indicador</h4>
+                <div class="card-demo">
+                    <div class="stat-num">98%</div>
+                    <div class="stat-label">Escolas satisfeitas</div>
+                </div>
+            </div>
+
+            <div class="element-card">
+                <h4>Cantos arredondados (border-radius)</h4>
+                <div class="radius-row">
+                    <div class="radius-box" style="border-radius:8px;">8px</div>
+                    <div class="radius-box" style="border-radius:16px;">16px</div>
+                    <div class="radius-box" style="border-radius:50%;">Full</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="doc-footer">
+        <span>FlexiPay · Guia de Identidade Visual</span>
+        <span>flexipay.com.br</span>
+    </div>
+
+</div>
+
+</body>
+</html>

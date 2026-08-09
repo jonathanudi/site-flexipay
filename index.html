@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlexiPay - Soluções Financeiras para Escolas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Cor Principal */
+            --magenta: #91278f;
+            --magenta-hover: #7b1f79;
+            --magenta-light: rgba(145, 39, 143, 0.08);
+
+            /* Cor de destaque secundária */
+            --accent-pink: #ed1369;
+
+            /* Degradê / tons escuros */
+            --dark: #100127;
+            --dark-soft: #2a1240;
+
+            /* Cores Base/Fundos - Regra 80% (Brancos e Gelos) */
+            --white: #ffffff;
+            --ice-white: #f8f6fa;
+            --gray-100: #f1f0f2;
+
+            /* Textos e Contornos - Regra 15% */
+            --gray-200: #e2e0e4;
+            --gray-600: #797a7a;
+            --gray-800: #3a2450;
+            --gray-900: #100127;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Nunito Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--gray-900);
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Botões */
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--magenta);
+            color: var(--white);
+            border: none;
+            box-shadow: 0 4px 14px rgba(145, 39, 143, 0.2);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--magenta-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(145, 39, 143, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--gray-900);
+            border: 2px solid var(--gray-200);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--magenta);
+            color: var(--magenta);
+            background-color: var(--magenta-light);
+        }
+
+        /* Navbar */
+        header {
+            padding: 24px 0;
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--gray-900);
+            letter-spacing: -0.03em;
+        }
+
+        .logo span {
+            color: var(--magenta);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--gray-600);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--magenta);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            padding: 48px 0;
+            overflow: hidden;
+            background: var(--gray-900);
+            min-height: calc(100vh - 97px);
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-bg-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 30%;
+            z-index: 0;
+        }
+
+        .hero-bg-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(100deg, rgba(16, 1, 39, 0.75) 0%, rgba(145, 39, 143, 0.45) 45%, rgba(16, 1, 39, 0) 78%);
+            z-index: 1;
+        }
+
+        .hero-grid {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: minmax(0, 460px) 1fr;
+            gap: 60px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-content {
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(6px);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25);
+        }
+
+        .hero-content h1 {
+            font-size: 2.1rem;
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+
+        .text-gradient {
+            color: var(--magenta);
+        }
+
+        .hero-content p {
+            font-size: 1.05rem;
+            margin-bottom: 24px;
+            max-width: 90%;
+            color: var(--gray-800);
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                min-height: auto;
+                padding: 60px 0;
+            }
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-bg-overlay {
+                background: linear-gradient(180deg, rgba(16, 1, 39, 0.4) 0%, rgba(16, 1, 39, 0.75) 100%);
+            }
+        }
+
+        /* Fintech Dashboard Mockup */
+        .dashboard-mockup {
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 24px 48px rgba(15, 23, 42, 0.05);
+            border: 1px solid var(--gray-200);
+            padding: 24px;
+            position: relative;
+            transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+            transition: transform 0.5s ease;
+        }
+
+        .dashboard-mockup:hover {
+            transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+        }
+
+        .mockup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .mockup-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: var(--magenta-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--magenta);
+        }
+
+        .mockup-line {
+            height: 8px;
+            border-radius: 4px;
+            background: var(--gray-200);
+        }
+        
+        .mockup-chart {
+            height: 120px;
+            background: linear-gradient(180deg, rgba(145, 39, 143, 0.1) 0%, rgba(145, 39, 143, 0) 100%);
+            border-bottom: 2px solid var(--magenta);
+            border-radius: 8px 8px 0 0;
+            margin-bottom: 24px;
+        }
+
+        .mockup-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .mockup-card {
+            padding: 16px;
+            border-radius: 8px;
+            background: var(--ice-white);
+            border: 1px solid var(--gray-100);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(120deg, var(--dark) 0%, var(--magenta) 100%);
+            border-top: 1px solid var(--gray-200);
+            border-bottom: 1px solid var(--gray-200);
+            padding: 80px 0;
+        }
+
+        .stats-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .stats-header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--white);
+            margin-bottom: 8px;
+            font-weight: 800;
+        }
+
+        .stat-item p {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--white);
+            opacity: 0.85;
+        }
+
+        /* Standard Feature Section */
+        .feature {
+            padding: 100px 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .feature-reverse .feature-grid {
+            direction: rtl;
+        }
+        
+        .feature-reverse .feature-content {
+            direction: ltr;
+        }
+
+        .feature-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+            font-weight: 800;
+        }
+
+        .feature-content p {
+            font-size: 1.125rem;
+            margin-bottom: 40px;
+            color: var(--gray-800);
+        }
+
+        /* Grid Benefits */
+        .benefits {
+            background-color: var(--ice-white);
+            padding: 120px 0;
+        }
+
+        .benefits-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 64px;
+        }
+
+        .benefits-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        .benefit-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid var(--gray-200);
+            box-shadow: 0 4px 6px rgba(15, 23, 42, 0.02);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(15, 23, 42, 0.06);
+            border-color: var(--magenta);
+        }
+
+        .icon-wrapper {
+            width: 56px;
+            height: 56px;
+            background: var(--magenta-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            color: var(--magenta);
+        }
+
+        .benefit-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        /* Testimonial Section */
+        .testimonial {
+            padding: 120px 0;
+            background-color: var(--white);
+        }
+
+        .testimonial-box {
+            background: var(--ice-white);
+            border-radius: 24px;
+            padding: 80px 60px;
+            text-align: center;
+            border: 1px solid var(--gray-200);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.04);
+        }
+
+        .testimonial-box h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 40px;
+            color: var(--gray-900);
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        
+        .video-card {
+            background-color: var(--gray-800);
+            border-radius: 12px;
+            aspect-ratio: 16/9;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .video-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.1) 100%);
+        }
+        
+        .play-icon {
+            position: relative;
+            width: 48px;
+            height: 48px;
+            background-color: var(--magenta);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            z-index: 2;
+            transition: transform 0.2s ease;
+        }
+        
+        .video-card:hover .play-icon {
+            transform: scale(1.1);
+        }
+        
+        .video-caption {
+            position: absolute;
+            bottom: 16px;
+            left: 16px;
+            right: 16px;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-align: left;
+            z-index: 2;
+        }
+
+        .brands {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .brands p {
+            font-size: 1.125rem;
+            color: var(--gray-900);
+            font-weight: 700;
+            margin-bottom: 32px;
+        }
+        
+        .brand-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            color: var(--gray-600);
+            font-weight: 800;
+            font-size: 1.25rem;
+        }
+
+        .brand-logos img {
+            height: 56px;
+            width: auto;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.2s ease;
+        }
+
+        .brand-logos img:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        /* Footer CTA */
+        .cta-section {
+            background: linear-gradient(120deg, var(--dark) 0%, var(--magenta) 100%);
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 800;
+            color: var(--white);
+        }
+        
+        .cta-section .btn {
+            background-color: var(--white);
+            color: var(--magenta);
+        }
+        
+        .cta-section .btn:hover {
+            background-color: var(--ice-white);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Footer Main */
+        footer {
+            background-color: var(--white);
+            padding: 80px 0 40px;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 16px;
+            letter-spacing: -0.03em;
+        }
+        
+        .footer-logo span {
+            color: var(--magenta);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .footer-links h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--gray-900);
+        }
+
+        .footer-links a, .footer-links p {
+            color: var(--gray-600);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--magenta);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--gray-200);
+            padding-top: 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--gray-600);
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-grid, .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .hero-content {
+                text-align: center;
+            }
+            .hero-content p {
+                margin: 0 auto 40px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .nav-links {
+                justify-content: center;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Nav (Atualizado Bloco 11) -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo"><img src="fotos/Logotipo_FlexiPay.png" alt="FlexiPay" style="height: 64px; width: auto; display: block;"></div>
+                        <nav class="nav-links">
+                <a href="#o-que-fazemos">O que fazemos</a>
+                <a href="#por-que-flexipay">Por que a FlexiPay</a>
+                <a href="#quem-somos">Quem somos</a>
+                <a href="area_familias.html" style="color: var(--magenta);">Área das famílias</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contato">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- BLOCO 1: Hero Section -->
+    <section class="hero">
+        <img class="hero-bg-img" src="fotos/Foto_Topo1.jpg" alt="Gestor financeiro de escola usando o FlexiPay no notebook">
+        <div class="hero-bg-overlay"></div>
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <h1>Sua escola <span class="text-gradient">funciona melhor</span> quando o financeiro deixa de ser uma preocupação</h1>
+                <p>Tenha mais segurança para cumprir compromissos, planejar os próximos meses e manter sua folha em dia.</p>
+                <a href="#" class="btn btn-primary">Quero saber como a FlexiPay pode ajudar</a>
+            </div>
+            <div></div>
+        </div>
+    </section>
+
+    <!-- BLOCO 2: Feature 1 -->
+    <section class="feature" id="o-que-fazemos">
+        <div class="container feature-grid">
+            <div class="feature-image">
+                <img src="fotos/Foto_2.jpg" alt="Professora organizando a rotina da escola pelo celular" style="width: 100%; height: auto; border-radius: 16px; box-shadow: 0 24px 48px rgba(15, 23, 42, 0.08); display: block;">
+            </div>
+            <div class="feature-content">
+                <h2>Folha em dia, mesmo quando as mensalidades entram depois.</h2>
+                <p>Como parceira da sua escola, a FlexiPay antecipa o valor necessário para a folha e assume a gestão das mensalidades, da emissão à cobrança.</p>
+                <a href="#" class="btn btn-outline">Quero pagar minha folha em dia</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOCO 3: Stats -->
+    <section class="stats" id="quem-somos">
+        <div class="container">
+            <div class="stats-header">
+                <h2>Desde 2003, ao lado de quem faz a escola acontecer.</h2>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>R$ 260 milhões</h3>
+                    <p>transacionados</p>
+                </div>
+                <div class="stat-item">
+                    <h3>137</h3>
+                    <p>escolas atendidas</p>
+                </div>
+                <div class="stat-item">
+                    <h3>+ de 20 anos</h3>
+                    <p>de experiência no mercado de educação</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOCO 4: Feature 2 -->
+    <section class="feature feature-reverse">
+        <div class="container feature-grid">
+            <div class="feature-image">
+                <img src="fotos/Foto_3.jpg" alt="Indicadores financeiros da escola em crescimento" style="width: 100%; height: auto; border-radius: 16px; box-shadow: 0 24px 48px rgba(15, 23, 42, 0.08); display: block;">
+            </div>
+            <div class="feature-content">
+                <h2>Cada escola tem uma realidade. A solução também precisa ser sob medida.</h2>
+                <p>A FlexiPay ajusta a solução ao momento do caixa, sem pacotes engessados e sem comprometer toda a receita do mês.</p>
+                <a href="#" class="btn btn-outline">Quero organizar o caixa da minha escola</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- BLOCO 5: Feature 3 (Dashboard Mockup) -->
+    <section class="feature" id="o-que-fazemos">
+        <div class="container feature-grid">
+            <div class="feature-image">
+                <img src="fotos/Foto_4.jpg" alt="Dashboard exclusivo da FlexiPay para acompanhar a operação da escola" style="width: 100%; height: auto; border-radius: 16px; box-shadow: 0 24px 48px rgba(15, 23, 42, 0.08); display: block;">
+            </div>
+            <div class="feature-content">
+                <h2>Você acompanha. A FlexiPay cuida.</h2>
+                <p>Um dashboard exclusivo reúne os principais dados da operação em uma visão simples e organizada.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- BLOCO 6: Feature 4 -->
+    <section class="feature feature-reverse" style="padding-top: 0;">
+        <div class="container feature-grid">
+            <div class="feature-image">
+                <img src="fotos/Foto_5.jpg" alt="Escola cuidando do relacionamento com as famílias" style="width: 100%; height: auto; border-radius: 16px; box-shadow: 0 24px 48px rgba(15, 23, 42, 0.08); display: block;">
+            </div>
+            <div class="feature-content">
+                <h2>Mais mensalidades em dia. O mesmo cuidado com as famílias.</h2>
+                <p>Com uma abordagem respeitosa e educativa, as cobranças são feitas sem desgastar a relação da escola com as famílias.</p>
+                <a href="#" class="btn btn-outline">Quero entender como funciona</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOCO 7: Benefits Grid -->
+    <section class="benefits" id="por-que-flexipay">
+        <div class="container">
+            <div class="benefits-header">
+                <h2>Por que escolher a FlexiPay?</h2>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="icon-wrapper">
+                        <!-- Sliders Icon (Medida) -->
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="21" x2="4" y2="14"></line>
+                            <line x1="4" y1="10" x2="4" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12" y2="3"></line>
+                            <line x1="20" y1="21" x2="20" y2="16"></line>
+                            <line x1="20" y1="12" x2="20" y2="3"></line>
+                            <line x1="1" y1="14" x2="7" y2="14"></line>
+                            <line x1="9" y1="8" x2="15" y2="8"></line>
+                            <line x1="17" y1="16" x2="23" y2="16"></line>
+                        </svg>
+                    </div>
+                    <h3>Solução sob medida</h3>
+                    <p>Uma solução ajustada à realidade da sua escola, sem pacotes engessados e sem comprometer toda a receita do mês.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="icon-wrapper">
+                        <!-- Users Icon (Equipe) -->
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <h3>Equipe dedicada</h3>
+                    <p>Atendimento próximo, respostas ágeis e uma equipe disponível para apoiar sua escola e alunos no dia a dia.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="icon-wrapper">
+                        <!-- Heart/Smile Icon (Vínculos) -->
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+                        </svg>
+                    </div>
+                    <h3>Cobrança que preserva vínculos</h3>
+                    <p>Os contatos com as famílias são conduzidos com respeito e clareza, favorecendo a regularização sem desgastar a relação com a escola.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="icon-wrapper">
+                        <!-- Trending Down Icon (Menores taxas) -->
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="22 17 13.5 8.5 8.5 13.5 2 7"></polyline>
+                            <polyline points="16 17 22 17 22 11"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Menores taxas do mercado</h3>
+                    <p>Quando a antecipação for necessária, sua escola conta com as menores taxas do mercado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- BLOCO 8 & 9: Testimonial & Brands -->
+    <section class="testimonial">
+        <div class="container">
+            <div class="testimonial-box">
+                <h2>Quem já conta com a FlexiPay, conta como é.</h2>
+                
+                <div class="testimonial-slider-container">
+                    <button class="slider-arrow prev-arrow" onclick="prevTestimonial()">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    </button>
+                    
+                    <div class="testimonial-slides">
+                        <!-- Slide 1 -->
+                        <div class="testimonial-slide active">
+                            <div class="testimonial-media">
+                                <div class="video-preview-box">
+                                    <div class="play-btn-overlay">
+                                        <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-content-side">
+                                <div class="quote-icon-mark">“</div>
+                                <p class="quote-text">Antes da FlexiPay, precisávamos esperar meses para investir. Hoje conseguimos antecipar recebíveis e crescer com muito mais segurança.</p>
+                                <div class="author-info">
+                                    <strong>João, diretor financeiro do Colégio Horizonte</strong>
+                                    <span>Uberlândia, Minas Gerais</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2 -->
+                        <div class="testimonial-slide">
+                            <div class="testimonial-media">
+                                <div class="video-preview-box" style="background-color: #100127;">
+                                    <div class="play-btn-overlay">
+                                        <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-content-side">
+                                <div class="quote-icon-mark">“</div>
+                                <p class="quote-text">A gestão da cobrança mudou nossa rotina. A equipe é extremamente atenciosa e nossas famílias são tratadas com total respeito.</p>
+                                <div class="author-info">
+                                    <strong>Mariana Costa, mantenedora do Instituto Educacional Alpha</strong>
+                                    <span>Uberlândia, Minas Gerais</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3 -->
+                        <div class="testimonial-slide">
+                            <div class="testimonial-media">
+                                <div class="video-preview-box" style="background-color: #334155;">
+                                    <div class="play-btn-overlay">
+                                        <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-content-side">
+                                <div class="quote-icon-mark">“</div>
+                                <p class="quote-text">Folha de pagamento nunca mais foi motivo de dor de cabeça. A FlexiPay cumpre exatamente o que promete com taxas justas.</p>
+                                <div class="author-info">
+                                    <strong>Carlos Eduardo, diretor geral do Colégio Integrado</strong>
+                                    <span>Araguari, Minas Gerais</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="slider-arrow next-arrow" onclick="nextTestimonial()">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </button>
+                </div>
+
+                <!-- BLOCO 9: Escolas -->
+                <div class="brands">
+                    <p>Escolas que já contam com a FlexiPay</p>
+                    <div class="brand-logos">
+                        <img src="fotos/parceiro1.webp" alt="Park Education">
+                        <img src="fotos/parceiro2.webp" alt="Faculdade da Costura">
+                        <img src="fotos/parceiro3.webp" alt="Code8734">
+                        <img src="fotos/parceiro4.webp" alt="Pingo de Gente">
+                        <img src="fotos/parceiro5.webp" alt="Instituição Qualifique-se">
+                        <img src="fotos/parceiro6.webp" alt="Faculdades Eficaz">
+                        <img src="fotos/parceiro7.webp" alt="Centro Educacional Adália Mascarenhas">
+                        <img src="fotos/parceiro8.webp" alt="Colégio Caminhando para o Futuro">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .testimonial-slider-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        .testimonial-slides {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .testimonial-slide {
+            display: none;
+            grid-template-columns: 320px 1fr;
+            gap: 48px;
+            align-items: center;
+            text-align: left;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .testimonial-slide.active {
+            display: grid;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .video-preview-box {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+
+        .play-btn-overlay {
+            width: 64px;
+            height: 64px;
+            background: rgba(145, 39, 143, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            cursor: pointer;
+            transition: transform 0.2s ease, background 0.2s ease;
+            box-shadow: 0 4px 12px rgba(145, 39, 143, 0.4);
+        }
+
+        .video-preview-box:hover .play-btn-overlay {
+            transform: scale(1.08);
+            background: var(--magenta);
+        }
+
+        .quote-icon-mark {
+            font-size: 3rem;
+            color: var(--magenta);
+            line-height: 1;
+            margin-bottom: 12px;
+            font-family: serif;
+        }
+
+        .quote-text {
+            font-size: 1.5rem !important;
+            font-weight: 700 !important;
+            color: var(--magenta) !important;
+            line-height: 1.4 !important;
+            margin-bottom: 24px !important;
+        }
+
+        .author-info strong {
+            display: block;
+            font-size: 1.125rem;
+            color: var(--gray-900);
+            margin-bottom: 4px;
+        }
+
+        .author-info span {
+            font-size: 0.95rem;
+            color: var(--gray-600);
+            font-weight: 600;
+        }
+
+        .slider-arrow {
+            background: transparent;
+            border: 2px solid var(--magenta);
+            color: var(--magenta);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            transition: all 0.2s ease;
+        }
+
+        .slider-arrow:hover {
+            background: var(--magenta-light);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .prev-arrow {
+            left: -24px;
+        }
+
+        .next-arrow {
+            right: -24px;
+        }
+
+        @media (max-width: 992px) {
+            .testimonial-slide {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 24px;
+            }
+            .video-preview-box {
+                max-width: 280px;
+                margin: 0 auto;
+            }
+            .prev-arrow {
+                left: 0px;
+            }
+            .next-arrow {
+                right: 0px;
+            }
+        }
+    </style>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.testimonial-slide');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                }
+            });
+        }
+
+        function nextTestimonial() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevTestimonial() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+    </script>
+
+    <!-- BLOCO 10: CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Converse com a FlexiPay e encontre uma solução sob medida para o caixa da sua escola.</h2>
+            <a href="#" class="btn">Quero falar com a FlexiPay</a>
+        </div>
+    </section>
+
+    <!-- BLOCO 11: Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Institucional -->
+                <div>
+                    <div class="footer-logo"><img src="fotos/Logotipo_FlexiPay.png" alt="FlexiPay" style="height: 28px; width: auto; display: block;"></div>
+                    <p style="font-size: 0.875rem; margin-bottom: 16px;">Parceira das escolas para manter o caixa organizado e as finanças seguras, com foco na sustentabilidade e no relacionamento educacional.</p>
+                    <!-- Redes sociais genéricas usando SVG -->
+                    <div style="display: flex; gap: 12px; color: var(--magenta);">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </div>
+                </div>
+                
+                <!-- Navegação -->
+                <div class="footer-links">
+                    <h4>Navegação</h4>
+                    <a href="#">Como funciona</a>
+                    <a href="#">Diferenciais</a>
+                    <a href="#">Sobre a FlexiPay</a>
+                    <a href="#">Depoimentos</a>
+                    <a href="#">FAQ</a>
+                </div>
+                
+                <!-- Contato e Privacidade -->
+                <div class="footer-links">
+                    <h4>Contato</h4>
+                    <p>Telefone: (11) 9999-9999</p>
+                    <p>WhatsApp: (11) 99999-9999</p>
+                    <p>E-mail: contato@flexipay.com.br</p>
+                    <p>Horário: Seg a Sex, 08h às 18h</p>
+                    <h4 style="margin-top: 16px;">Privacidade</h4>
+                    <a href="#">Canal LGPD (Dados Pessoais)</a>
+                </div>
+                
+                <!-- Dados Jurídicos e Links Legais -->
+                <div class="footer-links">
+                    <h4>Dados Jurídicos</h4>
+                    <p>FlexiPay Soluções Financeiras S/A</p>
+                    <p>CNPJ: 00.000.000/0001-00</p>
+                    <p>Endereço: Av. Exemplo, 1000 - São Paulo, SP</p>
+                    <h4 style="margin-top: 16px;">Links Legais</h4>
+                    <a href="#">Termos de uso</a>
+                    <a href="#">Política de privacidade</a>
+                    <a href="#">Preferências de cookies</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <span>&copy; 2026 FlexiPay. Todos os direitos reservados.</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
